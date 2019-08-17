@@ -22,26 +22,26 @@ PyVISA for simplicity.
 You can specify the backend to use when you instantiate the resource manager
 using the ``@`` symbol. Remembering that **ni** is the default, this::
 
-    >>> import visa
-    >>> rm = visa.ResourceManager()
+    >>> import pyvisa
+    >>> rm = pyvisa.ResourceManager()
 
 is the same as this::
 
-    >>> import visa
-    >>> rm = visa.ResourceManager('@ni')
+    >>> import pyvisa
+    >>> rm = pyvisa.ResourceManager('@ni')
 
 You can still provide the path to the library if needed::
 
-    >>> import visa
-    >>> rm = visa.ResourceManager('/path/to/lib@ni')
+    >>> import pyvisa
+    >>> rm = pyvisa.ResourceManager('/path/to/lib@ni')
 
 Under the hood, the |ResourceManager| looks for the requested backend and
 instantiate the VISA library that it provides.
 
 PyVISA locates backends by name. If you do:
 
-    >>> import visa
-    >>> rm = visa.ResourceManager('@somename')
+    >>> import pyvisa
+    >>> rm = pyvisa.ResourceManager('@somename')
 
 PyVISA will try to import a package/module named ``pyvisa-somename`` which
 should be installed in your system. This is a loosely coupled configuration
@@ -51,7 +51,7 @@ actually try to use it.
 You can list the installed backends by running the following code in the
 command line::
 
-    python -m visa info
+    pyvisa-info
 
 
 Developing a new Backend
@@ -68,7 +68,7 @@ What does a minimum backend looks like? Quite simple::
 
 Additionally you can provide a staticmethod named `get_debug_info` that should
 return a dictionary of debug information which is printed when you call
-``python -m visa info`` or ``pyvisa-info``
+``pyvisa-info``
 
 .. note::
 
